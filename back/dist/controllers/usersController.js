@@ -10,19 +10,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.login = exports.createUser = exports.getUserbyId = exports.getAllUsers = void 0;
+const usersService_1 = require("../services/usersService");
+const credentialsService_1 = require("../services/credentialsService");
 const getAllUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("Listado de ususarios");
+    const users = yield (0, usersService_1.getUsersService)();
+    res.status(200).json(users);
 });
 exports.getAllUsers = getAllUsers;
 const getUserbyId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("Usuario por Id");
+    const user = yield (0, usersService_1.getUserbyIdService)(req.body);
+    res.status(200).json(user);
 });
 exports.getUserbyId = getUserbyId;
 const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("registro de un nuevo usuario");
+    const answer = yield (0, usersService_1.createUserService)(req.body);
+    res.status(200).json(answer);
 });
 exports.createUser = createUser;
 const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("Login del usuario a la aplicacion");
+    const answer = yield (0, credentialsService_1.validateCredentialService)(req.body);
+    res.status(200).json(answer);
 });
 exports.login = login;

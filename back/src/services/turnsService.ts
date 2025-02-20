@@ -17,7 +17,7 @@ export const getTurnbyIdService = async (turnId: number) => {
         return turn;
     }
     if(turn!) {
-        return alert("No se encontro turno");
+        return console.log("No se encontro turno");
     }
 }
 
@@ -34,7 +34,7 @@ export const createTurnService = async (turnData: TurnDto) => {
     }
     turns.push(newTurn)
     id++;
-    return alert("Turno creado con exito");
+    return console.log("Turno creado con exito");
 }
 
 //Implementar una función que reciba el id de un turno específico y una vez identificado el turno
@@ -43,9 +43,9 @@ export const cancelTurnService = async (turnId: number) => {
     const turn = turns.find(u => u.id === turnId);
     if(turn) {
         turn.status = false;
-        return alert("Turno cancelado");
+        return console.log("Turno cancelado");
     }
     if(turn!) {
-        return alert("No se encontro turno");
+        return console.log("No se encontro turno");
     }
 }

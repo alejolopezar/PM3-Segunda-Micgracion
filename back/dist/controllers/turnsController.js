@@ -10,19 +10,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.cancelTurn = exports.createTurn = exports.getTurnbyId = exports.getAllTurns = void 0;
+const turnsService_1 = require("../services/turnsService");
 const getAllTurns = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("Listado de todos los turno de todos los ususarios");
+    const turns = yield (0, turnsService_1.getTurnsService)();
+    res.status(200).json(turns);
 });
 exports.getAllTurns = getAllTurns;
 const getTurnbyId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("obtenre el detalle de un turno por Id");
+    const turn = yield (0, turnsService_1.getTurnbyIdService)(req.body);
+    res.status(200).json(turn);
 });
 exports.getTurnbyId = getTurnbyId;
 const createTurn = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("registro de un nuevo turno");
+    const answer = yield (0, turnsService_1.createTurnService)(req.body);
+    res.status(200).json(answer);
 });
 exports.createTurn = createTurn;
 const cancelTurn = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("Cancelar un turno");
+    const answer = yield (0, turnsService_1.cancelTurnService)(req.body);
+    res.status(200).json(answer);
 });
 exports.cancelTurn = cancelTurn;

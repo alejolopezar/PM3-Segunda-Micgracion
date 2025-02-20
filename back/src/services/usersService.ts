@@ -18,7 +18,7 @@ export const getUserbyIdService = async (userId: number) => {
         return user;
     }
     if(user!) {
-        return alert("No se encontro usuario");
+        return console.log("No se encontro usuario");
     }
 }
 
@@ -38,5 +38,5 @@ export const createUserService = async (userData: UserDto) => {
     }
     users.push(newUser)
     id++;
-    return alert("Usuario creado con exito");
+    return console.log("Usuario creado con exito");
 }
